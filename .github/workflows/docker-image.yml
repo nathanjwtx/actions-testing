@@ -1,8 +1,12 @@
 name: Docker Image CI
 
 on:
-  pull_request:
+  workflow_dispatch:
+  push:
     branches: [ "main" ]
+    
+env:
+  TEST: github-action
 
 jobs:
 
