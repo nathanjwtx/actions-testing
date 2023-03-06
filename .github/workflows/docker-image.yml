@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
     
 env:
-  TEST: ${{ secrets.TEST_SECRET }}
+  TEST: '${{ secrets.TEST_SECRET }}'
 
 jobs:
 
