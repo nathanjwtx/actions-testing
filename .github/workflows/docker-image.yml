@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
     
 env:
-  TEST: github-action
+  TEST: ${{ TEST }}
 
 jobs:
 
