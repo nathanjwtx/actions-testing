@@ -5,9 +5,6 @@ on:
   push:
     branches: [ "main" ]
     
-env:
-  TEST: '${{ secrets.TEST_SECRET }}'
-
 jobs:
 
   build:
@@ -23,6 +20,5 @@ jobs:
       name: Build the Docker image
       run: docker build -t actions-testing:latest .
       
-    -
-      name: Run Tests
-      run: docker run --rm actions-testing python -m pytest test_app.py
+    - name: Run Tests
+      run: docker run -e TEST=${{ secrets.TEST_SECRET }} --rm actions-testing python -m pytest test_app.py
