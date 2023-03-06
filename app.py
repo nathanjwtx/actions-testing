@@ -1,13 +1,15 @@
-from flask import Flask
+from flask import Flask, jsonify
 from appcfg import TEST
 
-app = Flask(__name__)
 
+def create_app(test_config=None):
+    app = Flask(__name__)
 
-@app.route("/")
-def hello_world():  # put application's code here
-    return TEST
+    if test_config is None:
+        app.config.from_pyfile("appcfg.py", silent=True)
 
+    @app.route("/")
+    def hello_world():  # put application's code here
+        return jsonify(TEST)
 
-if __name__ == "__main__":
-    app.run()
+    return app
