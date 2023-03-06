@@ -3,6 +3,9 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
+    
+env:
+  TEST: github-action
 
 jobs:
 
