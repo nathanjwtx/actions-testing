@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from appcfg import TEST
+from appcfg import TEST, TEST_ACTION
 
 
 def create_app(test_config=None):
@@ -14,5 +14,9 @@ def create_app(test_config=None):
     @app.route("/")
     def hello_world():  # put application's code here
         return jsonify(TEST)
+    
+    @app.route('/test')
+    def test_action():
+        return jsonify(TEST_ACTION)
 
     return app
