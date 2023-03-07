@@ -10,15 +10,18 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
 
     steps:
     - 
       name: Checkout
       uses: actions/checkout@v3
+      env:
+        TEST_ACTION: ${{ secrets.TEST_SECRET }}
       
     - 
       name: Build the Docker image
       run: docker build -t actions-testing:latest .
       
     - name: Run Tests
-      run: docker run -e TEST=${{ env.TEST_SECRET }} --rm actions-testing python -m pytest test_app.py
+      run: docker run -e TEST=TEST_ACTION --rm actions-testing python -m pytest test_app.py
