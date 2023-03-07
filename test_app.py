@@ -38,7 +38,7 @@ def test_env_variable_prints_docker(client):
     assert json.loads(resp.data) == "docker"
 
 
-def test_env_variable_prints_github_action(client):
-    resp = client.get("/")
+def test_env_variable_prints_test_action_value(client):
+    resp = client.get("/test")
 
     assert json.loads(resp.data) == "github-action"

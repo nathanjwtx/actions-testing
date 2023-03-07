@@ -14,8 +14,8 @@ def create_app(test_config=None):
     @app.route("/")
     def hello_world():  # put application's code here
         return jsonify(TEST)
-    
-    @app.route('/test')
+
+    @app.route("/test")
     def test_action():
         return jsonify(TEST_ACTION)
 
