@@ -16,12 +16,12 @@ jobs:
     - 
       name: Checkout
       uses: actions/checkout@v3
-      env:
-        TEST_ACTION: ${{ secrets.TEST_SECRET }}
       
     - 
       name: Build the Docker image
       run: docker build -t actions-testing:latest .
       
     - name: Run Tests
-      run: docker run -e TEST=TEST_ACTION --rm actions-testing python -m pytest test_app.py
+      env:
+        TEST_ACTION: ${{ secrets.TEST_SECRET }}
+      run: docker run --rm actions-testing python -m pytest test_app.py
